@@ -1,22 +1,10 @@
-import { notFound } from "next/navigation";
-import { DetailMinggu } from "@/components/DetailMinggu";
+import { Dashboard } from "@/components/Dashboard";
 import { getRps } from "@/lib/data";
 
-// SSG: 16 halaman detail dibuat saat build.
-export async function generateStaticParams() {
-  const data = await getRps();
-  return data.minggu.map((m) => ({ id: String(m.minggu) }));
-}
+// ISR: halaman dibuat statis, diperbarui ulang tiap 1 jam.
+export const revalidate = 3600;
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  return { title: `Minggu ${id} | Dashboard RPS` };
-}
-
-export default async function MingguPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default async function HomePage() {
   const data = await getRps();
-  const minggu = data.minggu.find((m) => m.minggu === Number(id));
-  if (!minggu) notFound();
-  return <DetailMinggu minggu={minggu} />;
+  return <Dashboard data={data} />;
 }
