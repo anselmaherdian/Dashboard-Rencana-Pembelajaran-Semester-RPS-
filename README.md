@@ -33,8 +33,5 @@ npm run build && npm start
 ## Struktur
 `app/` (layout, page, `minggu/[id]`, loading, error) · `components/` (KpiCard, StatusBadge, FilterBar, DataTable, ChartCard, CatatanForm, DetailMinggu, ThemeToggle) · `lib/` (types, format Intl, data, store context, custom hook `useLocalStorage`).
 
-## Tangkapan layar
-(tempel di sini: dashboard terang, dashboard gelap, detail minggu, tampilan ponsel)
-
 ## Pernyataan penggunaan AI
 Saya menggunakan Claude (Anthropic) sebagai asisten untuk membuat kerangka awal proyek. Saya telah mempelajari, menjalankan, dan memodifikasi seluruh kode serta mampu menjelaskannya.
